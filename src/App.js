@@ -145,7 +145,6 @@ export default class App extends Component {
 			},
 			{ merge: true }
 		);
-		return setWithMerge;
 	};
 
 	async handleAdd(product) {
@@ -212,16 +211,14 @@ export default class App extends Component {
 		});
 		let tempPrice = await Number(this.state.totalPrice);
 		tempPrice = await tempPrice.toFixed(2);
-		if (this.state.isSignedIn) {
-			await db
-				.collection('users')
-				.doc(this.state.UID)
-				.set({
-					items: this.state.cartProducts,
-					totalPrice: tempPrice,
-					quantity: this.state.productQuantity
-				});
-		}
+		await db
+			.collection('users')
+			.doc(this.state.UID)
+			.set({
+				items: this.state.cartProducts,
+				totalPrice: tempPrice,
+				quantity: this.state.productQuantity
+			});
 	};
 
 	handleToggleFilterSize(size) {
@@ -249,7 +246,7 @@ export default class App extends Component {
 						>
 							{this.state.isSignedIn !== undefined &&
 								!this.state.isSignedIn && (
-									<div className="google-login">
+									<div>
 										<StyledFirebaseAuth
 											className={styles.firebaseUi}
 											uiConfig={this.uiConfig}

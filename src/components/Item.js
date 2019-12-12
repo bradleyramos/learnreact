@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './shelf_style.scss';
 import './materialize.css';
+import firebase from 'firebase';
 
 export default class Item extends React.Component {
 	constructor(props) {

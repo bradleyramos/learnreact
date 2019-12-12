@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import CartItem from './CartItem';
 import './float_cart.scss';
+import { object } from 'prop-types';
 
 export default class FloatCart extends React.Component {
 	constructor(props) {
